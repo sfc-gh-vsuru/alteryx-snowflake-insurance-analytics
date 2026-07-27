@@ -1,66 +1,118 @@
-# Insurance Analytics with Snowflake Cortex AI & Alteryx
+# Insurance Underwriting & Claims Analytics
 
-## The Power of Two Platforms
+## Snowflake AI Data Cloud + Alteryx Analytics Automation
+
+An end-to-end insurance analytics solution demonstrating how operational data flows from source systems through business-aware transformation pipelines into AI-powered analytics -- combining Snowflake's AI Data Cloud with Alteryx's Analytics Automation Platform.
+
+---
+
+## The Platforms
 
 ### Snowflake AI Data Cloud
 
-Snowflake's AI Data Cloud is the foundation of modern data intelligence. It unifies data storage, processing, and AI under a single governed platform -- enabling organizations to mobilize their data for analytics, machine learning, and generative AI without the complexity of managing infrastructure. With native capabilities like Cortex AI (large language models, ML functions, and Cortex Analyst), Snowflake transforms how enterprises extract value from data -- bringing AI directly to where the data lives, securely and at scale.
+Snowflake's AI Data Cloud unifies data storage, processing, and AI under a single governed platform. It enables organizations to mobilize data for analytics, machine learning, and generative AI without managing infrastructure. With native Cortex AI capabilities, Snowflake brings intelligence directly to where data lives -- securely and at scale.
 
-Key capabilities leveraged in this solution:
-- **Cortex LLM Functions** -- In-database generative AI using models like `claude-3-5-sonnet` for natural language generation, risk assessment, and personalized recommendations
-- **Cortex ML Functions** -- Native time-series forecasting and anomaly detection without external tooling
-- **Cortex Analyst** -- Natural language to SQL, enabling business users to ask questions in plain English
-- **Snowflake Secure Data Sharing** -- Zero-copy data sharing between partners with automatic incremental sync
-- **Streamlit in Snowflake** -- Interactive applications deployed natively within the Snowflake ecosystem
+Capabilities leveraged:
+- **Openflow (CDC)** -- Real-time change data capture from operational databases into Snowflake
+- **Cortex LLM Functions** -- In-database generative AI for natural language generation, risk assessment, and personalized recommendations
+- **Cortex ML Functions** -- Native time-series forecasting and anomaly detection
+- **Cortex Analyst** -- Natural language to SQL via Semantic Views, enabling business users to query data in plain English
+- **Streamlit in Snowflake** -- Interactive applications deployed natively within the data platform
 
-### Alteryx Platform
+### Alteryx Analytics Automation Platform
 
-Alteryx is the leading analytics automation platform that empowers business users and data professionals to transform raw data into actionable insights through intuitive, no-code/low-code workflows. Alteryx bridges the gap between raw data complexity and business decision-making -- enabling citizen data scientists and analysts to build repeatable, governed data pipelines without deep technical expertise.
+Alteryx empowers business users and data professionals to prepare, blend, and transform data through intuitive, no-code/low-code workflows. The Alteryx AiDIN platform combines automation with AI-assisted intelligence, enabling insurance domain experts to build repeatable, governed data pipelines that encode business logic without deep engineering expertise.
 
-Key capabilities leveraged in this solution:
-- **Visual Workflow Designer** -- Drag-and-drop data transformation and enrichment
-- **Snowflake Native Connector** -- Direct read/write to Snowflake with pushdown optimization
-- **Data Quality & Preparation** -- Cleansing, deduplication, and standardization at scale
-- **Business Logic Automation** -- Repeatable workflows that encode domain expertise into data pipelines
-
----
-
-## Solution Overview
-
-This solution demonstrates how **Alteryx** and **Snowflake** work together to deliver an end-to-end insurance analytics platform powered by AI.
-
-**The Data Flow:**
-
-Alteryx connects directly to Snowflake and reads raw insurance data from the bronze layer -- policy submissions, claims filings, adjuster notes, underwriting decisions, and fraud indicators. Through visual workflows designed by insurance business analysts, Alteryx transforms, cleanses, and enriches this raw data, applying business rules specific to insurance underwriting and claims operations. The transformed outputs are written back to Snowflake as curated silver and gold layer tables, organized for analytical consumption.
-
-In this implementation, the insurance business persona uses Alteryx to:
-1. Define and execute data transformation workflows on raw policy and claims data
-2. Apply domain-specific business rules (risk scoring logic, claims categorization, fraud flagging criteria)
-3. Publish curated, analytics-ready datasets back to Snowflake via secure data sharing
-
-Once the gold layer data lands in Snowflake (via the Alteryx partner share), Snowflake Cortex AI takes over -- applying large language models, machine learning, and natural language analytics to deliver intelligent insights through an interactive Streamlit dashboard.
+Capabilities leveraged:
+- **Designer Cloud** -- Visual, drag-and-drop workflow design for data blending, transformation, and enrichment
+- **Auto Insights** -- Automated discovery of patterns, trends, and anomalies in insurance data
+- **Snowflake Native Connector (In-DB)** -- Direct pushdown execution within Snowflake for high-performance processing
+- **Scheduler** -- Automated, scheduled execution of transformation workflows for continuous data freshness
+- **Data Quality & Governance** -- Built-in profiling, cleansing, and standardization capabilities
 
 ---
 
-## Alteryx Solution Deep Dive
+## Solution Architecture
 
-> *[Section reserved for detailed Alteryx workflow documentation, transformation logic, and business rule implementation]*
+```
+  Source System            Ingestion              Raw Layer             Transformation            Analytics & AI
+┌──────────────────┐    ┌───────────────┐    ┌──────────────────┐    ┌────────────────────┐    ┌─────────────────────┐
+│ MySQL 8.4        │    │ Snowflake     │    │ Snowflake        │    │ Alteryx            │    │ Snowflake           │
+│ (AWS EC2)        │───>│ Openflow      │───>│ INSURANCE_RAW    │───>│ Designer Cloud     │───>│ Cortex AI           │
+│                  │CDC │ (NiFi/SPCS)   │    │                  │    │                    │    │ + Streamlit (SiS)   │
+│ insurance_db     │    │               │    │ 8 tables         │    │ Business Workflows │    │                     │
+│ 8 tables, ~53K   │    │ Real-time     │    │ ~53,705 rows     │    │                    │    │ 7 AI Use Cases      │
+│ rows             │    │ CDC           │    │                  │    │ Silver & Gold      │    │ ML + LLM + Analyst  │
+└──────────────────┘    └───────────────┘    └──────────────────┘    │ Layer Output       │    └─────────────────────┘
+                                                                      └────────────────────┘
+```
+
+### Data Flow
+
+1. **Source:** MySQL 8.4 on AWS EC2 holds the operational insurance database -- customers, policies, underwriting decisions, claims, payments, adjusters, underwriters, and risk factors (~53,705 rows across 8 tables)
+
+2. **Ingestion:** Snowflake Openflow captures changes in real-time via CDC (Change Data Capture), landing raw data into Snowflake with sub-minute latency. Inserts, updates, and deletes flow continuously without batch scheduling.
+
+3. **Transformation (Alteryx):** Insurance business analysts use Alteryx Designer Cloud to build domain-aware transformation workflows that read from the Snowflake raw layer and produce curated silver and gold layer outputs:
+   - **Silver Layer (Curated):** Cleansed, joined, and standardized views -- underwriting pipelines, claims detail, customer 360 profiles
+   - **Gold Layer (Analytics):** Aggregated, KPI-ready datasets -- monthly underwriting metrics, claims summaries, fraud indicators, performance scorecards
+
+4. **AI & Analytics (Snowflake Cortex):** Cortex AI applies machine learning and large language models directly on the gold layer data. A 7-page Streamlit in Snowflake application delivers interactive, AI-powered insights to business stakeholders.
+
+---
+
+## Alteryx Transformation Layer
+
+Alteryx Designer Cloud workflows perform the business-aware transformations that bridge raw operational data and analytics-ready outputs. Insurance domain experts design these workflows using Alteryx's visual canvas, encoding business rules that reflect underwriting guidelines, claims adjudication logic, and regulatory requirements.
+
+### Silver Layer (Curated)
+
+| Workflow Output | Description |
+|-----------------|-------------|
+| Underwriting Pipeline | Joins policies + customers + decisions + underwriters into a unified underwriting view |
+| Risk Factor Summary | Aggregates and categorizes risk factors per policy with scoring logic |
+| Claims Detail | Joins claims + policies + customers + adjusters + payments for complete claims context |
+| Claim Payments Summary | Payment aggregates per claim with type/method breakdowns and settlement tracking |
+| Customer 360 | Holistic customer view rolling up policy, claims, and payment histories |
+
+### Gold Layer (Analytics)
+
+| Workflow Output | Description |
+|-----------------|-------------|
+| KPI Underwriting | Monthly underwriting metrics by product type (approval rates, risk scores, premiums) |
+| KPI Claims | Monthly claims metrics by claim type and product type (amounts, priorities, fraud flags) |
+| Fraud Summary | Fraud analysis aggregated by product type, claim type, and time period |
+| Underwriter Performance | Individual underwriter scorecards with approval rates, volume, and risk metrics |
+| Adjuster Performance | Claims adjuster efficiency metrics by region with settlement rates and workload indicators |
+
+### Alteryx Workflow Design Principles
+
+- **In-DB Processing:** Leverages the Alteryx Snowflake In-DB connector to push transformation logic into Snowflake's compute engine, minimizing data movement
+- **Parameterized Workflows:** Database names, schemas, and connection details are parameterized for environment portability
+- **Incremental Processing:** Workflows are designed to process only changed records, aligned with the CDC feed from Openflow
+- **Business Rule Encapsulation:** Domain logic (risk scoring thresholds, claims categorization, fraud flagging criteria) is maintained within the workflow -- owned and governed by business teams
 
 ---
 
 ## Alteryx and Snowflake - Joint Architecture
 
-> *[Section reserved for joint architecture diagram, data flow specifications, and integration patterns]*
+> *[Section reserved for detailed joint architecture diagram, integration patterns, and deployment topology]*
 
 ---
 
-## Business Use Cases
+## Alteryx Solution Deep Dive
 
-This platform demonstrates **7 AI-powered insurance analytics use cases**, each showcasing a distinct Snowflake Cortex AI capability:
+> *[Section reserved for detailed Alteryx workflow documentation, canvas screenshots, and business rule specifications]*
+
+---
+
+## Business Use Cases (Cortex AI)
+
+The gold layer data produced by Alteryx workflows feeds directly into **7 AI-powered insurance analytics use cases**, each showcasing a distinct Snowflake Cortex AI capability:
 
 | # | Use Case | AI Capability | Business Value |
 |---|----------|---------------|----------------|
-| 1 | Executive KPI Narratives | Cortex LLM (claude-3-5-sonnet) | Automated boardroom-ready summaries from raw metrics |
+| 1 | Executive KPI Narratives | Cortex LLM | Automated boardroom-ready summaries from raw metrics |
 | 2 | Fraud Intelligence Center | ML Anomaly Detection + LLM | Proactive fraud pattern detection and risk assessment |
 | 3 | Claims Triage Command Center | Cortex LLM | AI-assisted prioritization and resource allocation |
 | 4 | Underwriter Performance Coaching | Cortex LLM | Personalized AI coaching at scale |
@@ -70,45 +122,7 @@ This platform demonstrates **7 AI-powered insurance analytics use cases**, each 
 
 ---
 
-## Data Architecture
-
-### Source: Alteryx Partner Share
-
-The curated gold layer data is shared from Alteryx via Snowflake Secure Data Sharing:
-
-```
-ALTERYX_SHARE.INSURANCE_UNDERWRITING_ANALYTICS
-├── KPI_UNDERWRITING        (140 rows) -- Monthly underwriting KPIs by product type
-├── KPI_CLAIMS              (371 rows) -- Monthly claims metrics by claim & product type
-├── FRAUD_SUMMARY           (68 rows)  -- Fraud-specific claim aggregations
-├── ADJUSTER_PERFORMANCE    (30 rows)  -- Claims adjuster workload & efficiency
-└── UNDERWRITER_PERFORMANCE (25 rows)  -- Individual underwriter metrics
-```
-
-### Target: ALTERYX_INSURANCE_DB
-
-Views in the target database point directly to the partner share, ensuring **automatic incremental updates** -- when Alteryx refreshes the share, all downstream analytics reflect the latest data instantly with zero ETL.
-
-```
-ALTERYX_INSURANCE_DB.PUBLIC
-├── Views (auto-sync from partner share)
-│   ├── KPI_UNDERWRITING
-│   ├── KPI_CLAIMS
-│   ├── FRAUD_SUMMARY
-│   ├── ADJUSTER_PERFORMANCE
-│   └── UNDERWRITER_PERFORMANCE
-├── ML Model Results
-│   ├── CLAIMS_FORECAST_RESULTS    -- 6-month forecast by product type
-│   └── FRAUD_ANOMALY_RESULTS      -- Anomaly detection on fraud patterns
-├── Semantic View
-│   └── INSURANCE_ANALYTICS_SV     -- Cortex Analyst natural language interface
-├── Stage
-│   └── INSURANCE_STAGE            -- App files + semantic model YAML
-└── Streamlit App
-    └── INSURANCE_ANALYTICS_APP    -- 7-page interactive dashboard
-```
-
-### Data Dimensions
+## Data Dimensions
 
 - **Product Types:** AUTO, COMMERCIAL, HEALTH, HOME, LIFE
 - **Claim Types:** COLLISION, FIRE, LIABILITY, MEDICAL, PROPERTY, THEFT, WATER
@@ -119,78 +133,64 @@ ALTERYX_INSURANCE_DB.PUBLIC
 
 ## Cortex AI Components
 
-### UDFs (User-Defined Functions)
+### LLM-Powered UDFs
 
-Five SQL UDFs powered by `claude-3-5-sonnet` provide on-demand AI analysis:
+Five SQL UDFs provide on-demand AI analysis, each calling `SNOWFLAKE.CORTEX.COMPLETE` with domain-engineered prompts:
 
-| UDF | Purpose | Inputs |
-|-----|---------|--------|
-| `GENERATE_KPI_NARRATIVE` | Executive summary generation from monthly KPIs | month, product_type, metrics |
-| `FRAUD_RISK_ASSESSMENT` | Fraud risk commentary with severity classification | product_type, claim_type, amounts, status |
-| `CLAIMS_TRIAGE_RECOMMENDATION` | Priority classification (P1-P4) with action items | claim_type, priority, fraud_flag, days, amounts |
-| `UNDERWRITER_COACHING` | Personalized performance coaching feedback | name, specialization, rates, scores, experience |
-| `ADJUSTER_WORKLOAD_ANALYSIS` | Workload status and rebalancing recommendations | adjuster_id, region, claims, rates |
+| UDF | Purpose |
+|-----|---------|
+| `GENERATE_KPI_NARRATIVE` | Executive summary generation from monthly underwriting KPIs |
+| `FRAUD_RISK_ASSESSMENT` | Fraud risk commentary with severity classification (LOW/MEDIUM/HIGH/CRITICAL) |
+| `CLAIMS_TRIAGE_RECOMMENDATION` | Priority classification (P1-P4) with recommended actions |
+| `UNDERWRITER_COACHING` | Personalized performance feedback and coaching recommendations |
+| `ADJUSTER_WORKLOAD_ANALYSIS` | Workload status assessment and rebalancing recommendations |
 
 ### ML Models
 
-| Model | Type | Training Data | Output |
-|-------|------|---------------|--------|
-| `CLAIMS_FORECAST_MODEL` | SNOWFLAKE.ML.FORECAST | Claims amounts by product (monthly) | 6-month predictions + 95% confidence intervals |
-| `FRAUD_ANOMALY_MODEL` | SNOWFLAKE.ML.ANOMALY_DETECTION | Fraud claim counts by product (pre-2025) | Anomaly flags on 2025+ data with percentiles |
+| Model | Type | Purpose |
+|-------|------|---------|
+| Claims Forecast | `SNOWFLAKE.ML.FORECAST` | 6-month claims volume prediction with 95% confidence intervals |
+| Fraud Anomaly Detection | `SNOWFLAKE.ML.ANOMALY_DETECTION` | Detects unusual fraud patterns in time-series data |
 
-### Semantic View
+### Semantic View (Cortex Analyst)
 
-`INSURANCE_ANALYTICS_SV` enables Cortex Analyst natural language querying across all 5 source tables:
-- 13 dimensions (month, product type, claim type, region, underwriter name, specialization, etc.)
+A semantic view enables natural language querying across all analytics tables:
+- 13 dimensions (month, product type, claim type, region, underwriter, specialization, etc.)
 - 23 metrics (policy counts, amounts, rates, fraud counts, settlement rates, etc.)
-- 5 verified queries for onboarding users
+- Verified queries for user onboarding
 
 ---
 
-## Streamlit Application
+## Streamlit in Snowflake Application
 
-### App: INSURANCE_ANALYTICS_APP
+A multi-page interactive dashboard deployed natively in Snowflake:
 
-A multi-page Streamlit in Snowflake application with polished visualizations:
-
-```
-streamlit_app.py                    -- Landing page with navigation
-pages/
-├── 1_Executive_Dashboard.py        -- KPI cards, trend charts, AI narratives
-├── 2_Fraud_Intelligence.py         -- Heatmaps, anomaly viz, AI risk assessment
-├── 3_Claims_Triage.py              -- Priority matrix, distribution, AI triage
-├── 4_Underwriter_Insights.py       -- Radar charts, leaderboard, AI coaching
-├── 5_Forecasting.py                -- ML forecast with confidence bands
-├── 6_Ask_Me_Anything.py            -- Natural language Q&A interface
-└── 7_Adjuster_Workload.py          -- Regional analysis, AI workload optimization
-```
-
-### Visual Design
-- Interactive Plotly charts (area, line, bar, scatter, pie, radar, heatmap)
-- Color-coded KPI metric cards with performance indicators
-- Custom CSS styling with gradient headers and card-based layouts
-- On-demand AI generation via button triggers (avoids unnecessary LLM calls)
+| Page | Visualizations |
+|------|---------------|
+| Executive Dashboard | KPI metric cards, trend charts, AI-generated narratives |
+| Fraud Intelligence | Heatmaps, anomaly detection timeline, AI risk assessments |
+| Claims Triage | Priority matrix scatter plot, distribution charts, AI triage recommendations |
+| Underwriter Insights | Radar/spider charts, leaderboard, AI coaching panel |
+| Forecasting | ML forecast with confidence bands, product comparison |
+| Ask Me Anything | Natural language chat interface powered by Cortex Analyst |
+| Adjuster Workload | Regional bubble charts, workload optimization recommendations |
 
 ---
 
 ## Access & Permissions
 
-This solution uses a **least-privilege** access model. Replace the placeholder role names below with roles appropriate to your organization:
+This solution uses a **least-privilege** access model. Replace placeholder role names with roles appropriate to your organization:
 
 | Role (Configurable) | Access Level |
 |---------------------|-------------|
-| `<DEPLOYER_ROLE>` | Owner -- full control on all objects (used for initial deployment) |
-| `<CONSUMER_ROLE>` | Granted USAGE/SELECT on all views, tables, UDFs, stage, Streamlit app, and semantic view |
-
-> **Note:** In production, avoid using `ACCOUNTADMIN` for day-to-day access. Create a dedicated functional role with only the privileges required for this application.
+| `<DEPLOYER_ROLE>` | Owner -- creates all objects during initial deployment |
+| `<CONSUMER_ROLE>` | Read access to views, tables, UDFs, Streamlit app, and semantic view |
 
 ### Recommended RBAC Setup
 
 ```sql
--- Create a dedicated role for this application
 CREATE ROLE IF NOT EXISTS INSURANCE_ANALYTICS_ROLE;
 
--- Grant necessary privileges
 GRANT USAGE ON DATABASE <YOUR_DATABASE> TO ROLE INSURANCE_ANALYTICS_ROLE;
 GRANT USAGE ON SCHEMA <YOUR_DATABASE>.PUBLIC TO ROLE INSURANCE_ANALYTICS_ROLE;
 GRANT SELECT ON ALL VIEWS IN SCHEMA <YOUR_DATABASE>.PUBLIC TO ROLE INSURANCE_ANALYTICS_ROLE;
@@ -201,34 +201,16 @@ GRANT USAGE ON STREAMLIT <YOUR_DATABASE>.PUBLIC.<YOUR_STREAMLIT_APP> TO ROLE INS
 
 ---
 
-## Technical Setup
+## Technical Prerequisites
 
-### Prerequisites
-- Snowflake account with Cortex AI enabled (check [region availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability))
-- Access to the Alteryx partner share (or equivalent source data share)
+- Snowflake account with Cortex AI enabled ([region availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability))
+- Snowflake Openflow enabled for CDC ingestion
+- Alteryx Designer Cloud with Snowflake In-DB connector configured
 - A warehouse with appropriate sizing (XSMALL is sufficient for this dataset)
-- A role with `CREATE DATABASE`, `CREATE WAREHOUSE` privileges (for initial setup only)
+- A role with `CREATE DATABASE` privileges (initial setup only)
 
-### Configuration
+### Dependencies
 
-The following values are configurable -- update them to match your environment:
-
-| Parameter | Description | Example Value |
-|-----------|-------------|---------------|
-| `<SOURCE_SHARE>` | Alteryx partner share name | `ALTERYX_SHARE.INSURANCE_UNDERWRITING_ANALYTICS` |
-| `<TARGET_DATABASE>` | Database for analytics objects | `ALTERYX_INSURANCE_DB` |
-| `<WAREHOUSE>` | Compute warehouse | Any warehouse in your account |
-| `<DEPLOYER_ROLE>` | Role that creates objects | A role with appropriate CREATE privileges |
-| `<CONSUMER_ROLE>` | Role that accesses the app | A role granted to end users |
-
-### Deployment
-All objects are deployed in `<TARGET_DATABASE>.PUBLIC`:
-- Views auto-sync from the Alteryx partner share
-- UDFs call `SNOWFLAKE.CORTEX.COMPLETE('claude-3-5-sonnet', ...)` for LLM inference
-- ML models are trained using `SNOWFLAKE.ML.FORECAST` and `SNOWFLAKE.ML.ANOMALY_DETECTION`
-- Streamlit app files are stored on `@INSURANCE_STAGE` and served via `CREATE STREAMLIT`
-
-### Dependencies (environment.yml)
 ```yaml
 name: sf_env
 channels:
@@ -242,26 +224,20 @@ dependencies:
 
 ## Security Considerations
 
-> **IMPORTANT:** This repository contains NO credentials, passwords, API keys, or secrets.
+> **This repository contains NO credentials, passwords, API keys, or secrets.**
 
-Before committing or sharing externally, verify the following checklist:
-
-- [ ] No Snowflake account identifiers or URLs in code
-- [ ] No usernames, passwords, or private keys
-- [ ] No OAuth tokens or API keys
-- [ ] No `.env` files or credential configuration files
-- [ ] Role names are generalised (not org-specific privileged roles)
-- [ ] Warehouse names are documented as configurable, not hardcoded to internal names
-
-### Best Practices Applied
-- All sensitive configuration is parameterized (database, role, warehouse names)
-- The Streamlit app uses `get_active_session()` which inherits the caller's session -- no embedded credentials
+- All configuration values (database names, roles, warehouses) are parameterized as placeholders
+- The Streamlit app uses `get_active_session()` -- inherits the caller's session with no embedded credentials
 - UDFs reference Cortex functions via fully-qualified names with no authentication tokens
 - Data access is governed by Snowflake RBAC -- the app only sees what the executing role is granted
-- The partner share is read-only by design -- no write-back risk to source data
+- Source data is read-only by design -- transformation outputs are written to separate schemas
 
 ---
 
 ## Summary
 
-This solution demonstrates the power of combining **Alteryx** (business-driven data transformation) with **Snowflake Cortex AI** (in-database intelligence) to deliver a complete insurance analytics platform. The data flows from raw to insight without leaving the Snowflake ecosystem -- Alteryx handles the business logic and data curation, while Snowflake Cortex AI provides generative narratives, predictive forecasting, anomaly detection, and natural language access, all served through an interactive Streamlit dashboard.
+This solution demonstrates a complete insurance analytics pipeline:
+
+**MySQL (Source)** --> **Openflow CDC (Real-time Ingestion)** --> **Snowflake Raw Layer** --> **Alteryx (Business-Aware Transformation)** --> **Snowflake Cortex AI (Intelligence)** --> **Streamlit in Snowflake (Delivery)**
+
+Alteryx owns the business logic layer -- insurance domain experts design and maintain transformation workflows that encode underwriting guidelines, claims rules, and compliance requirements. Snowflake Cortex AI then applies generative AI, machine learning, and natural language analytics on top of the curated outputs, delivering intelligent insights through an interactive dashboard accessible to all stakeholders.
