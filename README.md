@@ -35,16 +35,36 @@ Capabilities leveraged:
 ## Solution Architecture
 
 ```
-  Source System            Ingestion              Raw Layer             Transformation            Analytics & AI
-┌──────────────────┐    ┌───────────────┐    ┌──────────────────┐    ┌────────────────────┐    ┌─────────────────────┐
-│ MySQL 8.4        │    │ Snowflake     │    │ Snowflake        │    │ Alteryx            │    │ Snowflake           │
-│ (AWS EC2)        │───>│ Openflow      │───>│ INSURANCE_RAW    │───>│ Designer Cloud     │───>│ Cortex AI           │
-│                  │CDC │ (NiFi/SPCS)   │    │                  │    │                    │    │ + Streamlit (SiS)   │
-│ insurance_db     │    │               │    │ 8 tables         │    │ Business Workflows │    │                     │
-│ 8 tables, ~53K   │    │ Real-time     │    │ ~53,705 rows     │    │                    │    │ 7 AI Use Cases      │
-│ rows             │    │ CDC           │    │                  │    │ Silver & Gold      │    │ ML + LLM + Analyst  │
-└──────────────────┘    └───────────────┘    └──────────────────┘    │ Layer Output       │    └─────────────────────┘
-                                                                      └────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│                              END-TO-END DATA FLOW                                           │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+
+ ┌────────────┐       ┌────────────┐       ┌────────────┐       ┌────────────┐       ┌────────────┐
+ │   SOURCE   │       │ INGESTION  │       │  RAW LAYER │       │ TRANSFORM  │       │ ANALYTICS  │
+ │            │       │            │       │            │       │            │       │   & AI     │
+ │  MySQL 8.4 │──CDC──│ Snowflake  │──────>│ Snowflake  │──────>│  Alteryx   │──────>│ Snowflake  │
+ │  (AWS EC2) │       │ Openflow   │       │ Raw Tables │       │ Designer   │       │ Cortex AI  │
+ │            │       │            │       │            │       │  Cloud     │       │            │
+ └────────────┘       └────────────┘       └────────────┘       └────────────┘       └────────────┘
+       │                     │                     │                     │                     │
+       │                     │                     │                     │                     │
+  Operational          Real-time CDC          Bronze Layer          Silver & Gold         AI + Dashboard
+  Database             (sub-minute)           (8 tables)            Layers (Curated       (7 use cases)
+  8 tables             Inserts/Updates        ~53,705 rows          & Analytics)
+  ~53K rows            /Deletes
+
+
+ ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+ │                                                                                             │
+ │  SNOWFLAKE AI DATA CLOUD                                                                    │
+ │  ┌──────────────────────────────────────────────────────────────────────────────────────┐   │
+ │  │                                                                                      │   │
+ │  │  Openflow    ──>   Raw Tables   ──>   Alteryx In-DB   ──>   Cortex AI + Streamlit   │   │
+ │  │  (SPCS)             (Landing)          (Pushdown SQL)        (LLM, ML, Analyst)      │   │
+ │  │                                                                                      │   │
+ │  └──────────────────────────────────────────────────────────────────────────────────────┘   │
+ │                                                                                             │
+ └─────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Data Flow
