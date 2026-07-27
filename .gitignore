@@ -1,0 +1,33 @@
+# Credentials and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.toml
+config.toml
+
+# Snowflake connection configs
+connections.toml
+snowflake_credentials.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Temp files
+*.tmp
+*.bak
