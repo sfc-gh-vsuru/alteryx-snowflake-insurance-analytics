@@ -188,7 +188,7 @@ A multi-page interactive dashboard deployed natively in Snowflake:
 | Page | Visualizations |
 |------|---------------|
 | Executive Dashboard | KPI metric cards, trend charts, AI-generated narratives |
-| Fraud Intelligence | Heatmaps, anomaly detection timeline, AI risk assessments |
+| Fraud Intelligence | Fraud distribution charts, anomaly detection timeline, AI risk assessments |
 | Claims Triage | Priority matrix scatter plot, distribution charts, AI triage recommendations |
 | Underwriter Insights | Radar/spider charts, leaderboard, AI coaching panel |
 | Forecasting | ML forecast with confidence bands, product comparison |
