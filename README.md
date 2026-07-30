@@ -1,8 +1,8 @@
 # Insurance Underwriting & Claims Analytics
 
-## Snowflake AI Data Cloud + Alteryx Analytics Automation
+## Snowflake AI Data Cloud + Alteryx One Platform
 
-An end-to-end insurance analytics solution demonstrating how operational data flows from source systems through business-aware transformation pipelines into AI-powered analytics -- combining Snowflake's AI Data Cloud with Alteryx's Analytics Automation Platform.
+An end-to-end insurance analytics solution demonstrating how operational data flows from source systems through business-aware transformation pipelines into AI-powered analytics -- combining Snowflake's AI Data Cloud with the Alteryx One Platform.
 
 ---
 
@@ -19,16 +19,16 @@ Capabilities leveraged:
 - **Cortex Analyst** -- Natural language to SQL via Semantic Views, enabling business users to query data in plain English
 - **Streamlit in Snowflake** -- Interactive applications deployed natively within the data platform
 
-### Alteryx Analytics Automation Platform
+### Alteryx One Platform
 
-Alteryx empowers business users and data professionals to prepare, blend, and transform data through intuitive, no-code/low-code workflows. The Alteryx AiDIN platform combines automation with AI-assisted intelligence, enabling insurance domain experts to build repeatable, governed data pipelines that encode business logic without deep engineering expertise.
+Alteryx One empowers domain experts and data professionals to prepare, blend, and transform data through intuitive, no-code/low-code workflows. The Alteryx One platform enables automation and seamless pushdown execution in Snowflake, allowing insurance teams to build repeatable, governed data pipelines that encode complex business logic without requiring deep engineering expertise. 
 
 Capabilities leveraged:
-- **Designer Cloud** -- Visual, drag-and-drop workflow design for data blending, transformation, and enrichment
-- **Auto Insights** -- Automated discovery of patterns, trends, and anomalies in insurance data
-- **Snowflake Native Connector (In-DB)** -- Direct pushdown execution within Snowflake for high-performance processing
-- **Scheduler** -- Automated, scheduled execution of transformation workflows for continuous data freshness
-- **Data Quality & Governance** -- Built-in profiling, cleansing, and standardization capabilities
+- **Live Query** -- Empowers business users to build no-code workflows and execute analytics directly within Snowflake without moving raw data 
+- **Auto Insights** -- Delivers AI-driven pattern discovery and automated storytelling to uncover critical trends, root causes, and anomalies in insurance data
+- **Alteryx AI Agents** -- Enables users to build AI agents in Alteryx Agent Studio and extend trusted business context to Snowflake AI agents through MCP integration
+- **Orchestrator** -- Automated, scheduled execution of transformation workflows for continuous data freshness
+- **Data Quality & Governance** -- Built-in profiling, cleansing, and standardization capabilities while adhering to the RBAC and security protocols enforced in Snowflake. 
 
 ---
 
@@ -44,7 +44,7 @@ Capabilities leveraged:
  │            │       │            │       │            │       │            │       │   & AI     │
  │  MySQL 8.4 │──CDC──│ Snowflake  │──────>│ Snowflake  │──────>│  Alteryx   │──────>│ Snowflake  │
  │  (AWS EC2) │       │ Openflow   │       │ Raw Tables │       │ Designer   │       │ Cortex AI  │
- │            │       │            │       │            │       │  Cloud     │       │            │
+ │            │       │            │       │            │       │  Cloud     │       │Auto Insights│
  └────────────┘       └────────────┘       └────────────┘       └────────────┘       └────────────┘
        │                     │                     │                     │                     │
        │                     │                     │                     │                     │
