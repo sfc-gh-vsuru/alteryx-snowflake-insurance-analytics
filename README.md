@@ -118,41 +118,43 @@ Business users create and maintain transformation logic using Alteryx's visual n
 
 Alteryx Live Query compiles visual workflows into native Snowflake SQL, executing transformations directly inside Snowflake to maximize performance while keeping data secure and governed.
 
-
+---
 
 ## Governed Business Context
 
 Business logic—including underwriting policies, claims rules, fraud detection criteria, customer segmentation, and KPI calculations—is centralized, version-controlled, and reusable across analytics and AI use cases.
 
-AI-Ready Data Products
+---
+## AI-Ready Data Products
 
 Curated outputs are published as governed business data products that can be consumed by:
 
 Snowflake Cortex Analysts
 Snowflake Agent Studio
+Streamlit
 Alteryx Agent Studio
-Dashboards
-BI Applications
+Alteryx Auto Insights
 Enterprise AI applications
 External APIs
-Reusable Analytics Components
 
-Common business transformations become reusable assets that can be leveraged across multiple workflows, departments, and AI agents, reducing duplication while ensuring consistency.
+---
 
-Enterprise Governance
+## Reusable Analytics Components
+
+Common business transformations become reusable assets that can be leveraged across multiple workflows, departments, and AI agents, reducing duplication while ensuring consistency. Domain logic (risk scoring thresholds, claims categorization, fraud flagging criteria) is maintained within the workflow -- owned and governed by business teams
+
+---
+
+## Enterprise Governance
 
 Built-in governance provides:
 
-Version control
-Lineage
-Auditability
-Security
-Role-based access
-Certified business data products
-- **In-DB Processing:** Leverages the Alteryx Snowflake In-DB connector to push transformation logic into Snowflake's compute engine, minimizing data movement
-- **Parameterized Workflows:** Database names, schemas, and connection details are parameterized for environment portability
-- **Incremental Processing:** Workflows are designed to process only changed records, aligned with the CDC feed from Openflow
-- **Business Rule Encapsulation:** Domain logic (risk scoring thresholds, claims categorization, fraud flagging criteria) is maintained within the workflow -- owned and governed by business teams
+- Version control
+- Lineage
+- Auditability
+- Security
+- Role-based access
+- Certified business data products
 
 ---
 
