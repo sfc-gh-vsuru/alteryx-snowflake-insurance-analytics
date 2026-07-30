@@ -81,32 +81,74 @@ Capabilities leveraged:
 
 ---
 
-## Alteryx Transformation Layer
+## Alteryx One Business Logic & AI Orchestration Layer
 
-Alteryx Designer Cloud workflows perform the business-aware transformations that bridge raw operational data and analytics-ready outputs. Insurance domain experts design these workflows using Alteryx's visual canvas, encoding business rules that reflect underwriting guidelines, claims adjudication logic, and regulatory requirements.
+Alteryx One provides the governed business logic layer that transforms enterprise data into trusted, AI-ready business assets. Using a visual, no-code development experience, business users and domain experts can build reusable workflows, apply business rules, and operationalize analytics directly within Snowflake using Live Query—without moving raw data.
 
-### Silver Layer (Curated)
+The curated outputs become governed data products that power dashboards, AI agents, Snowflake Cortex, and enterprise applications.
 
-| Workflow Output | Description |
-|-----------------|-------------|
-| Underwriting Pipeline | Joins policies + customers + decisions + underwriters into a unified underwriting view |
-| Risk Factor Summary | Aggregates and categorizes risk factors per policy with scoring logic |
-| Claims Detail | Joins claims + policies + customers + adjusters + payments for complete claims context |
-| Claim Payments Summary | Payment aggregates per claim with type/method breakdowns and settlement tracking |
-| Customer 360 | Holistic customer view rolling up policy, claims, and payment histories |
+### Curated Business Data Products(Silver Layer)
+
+| Workflow Output | Description | Workflow Name
+|-----------------|-------------|--------------|
+| Underwriting Pipeline| Joins policies + customers + decisions + underwriters into a unified underwriting view | Underwriting Curated Views
+| Risk Intelligence | Aggregates and categorizes risk factors per policy with scoring logic | Underwriting Curated Views
+| Claims Details | Joins claims + policies + customers + adjusters + payments for complete claims context | Claims Curated Views
+| Claim Payments Summary | Payment aggregates per claim with type/method breakdowns and settlement tracking | Claims Curated Views
+| Customer 360 | Holistic customer view rolling up policy, claims, and payment histories | Customer Curated Views
 
 ### Gold Layer (Analytics)
 
-| Workflow Output | Description |
-|-----------------|-------------|
-| KPI Underwriting | Monthly underwriting metrics by product type (approval rates, risk scores, premiums) |
-| KPI Claims | Monthly claims metrics by claim type and product type (amounts, priorities, fraud flags) |
-| Fraud Summary | Fraud analysis aggregated by product type, claim type, and time period |
-| Underwriter Performance | Individual underwriter scorecards with approval rates, volume, and risk metrics |
-| Adjuster Performance | Claims adjuster efficiency metrics by region with settlement rates and workload indicators |
+| Workflow Output | Description | Workflow Name
+|-----------------|-------------|--------------|
+| KPI Underwriting | Monthly underwriting metrics by product type (approval rates, risk scores, premiums) | Insurance Underwriting Analytics
+| KPI Claims | Monthly claims metrics by claim type and product type (amounts, priorities, fraud flags) | Claims Analytics
+| Fraud Summary | Fraud analysis aggregated by product type, claim type, and time period | Claims Analytics
+| Underwriter Performance | Individual underwriter scorecards with approval rates, volume, and risk metrics | Insurance Underwriting Analytics
+| Adjuster Performance | Claims adjuster efficiency metrics by region with settlement rates and workload indicators | Claims Analytics
 
 ### Alteryx Workflow Design Principles
 
+## Business-Owned Logic
+
+Business users create and maintain transformation logic using Alteryx's visual no-code interface, eliminating dependence on SQL development while ensuring domain expertise remains embedded within the analytics lifecycle.
+
+---
+## Live Query Execution
+
+Alteryx Live Query compiles visual workflows into native Snowflake SQL, executing transformations directly inside Snowflake to maximize performance while keeping data secure and governed.
+
+
+
+## Governed Business Context
+
+Business logic—including underwriting policies, claims rules, fraud detection criteria, customer segmentation, and KPI calculations—is centralized, version-controlled, and reusable across analytics and AI use cases.
+
+AI-Ready Data Products
+
+Curated outputs are published as governed business data products that can be consumed by:
+
+Snowflake Cortex Analysts
+Snowflake Agent Studio
+Alteryx Agent Studio
+Dashboards
+BI Applications
+Enterprise AI applications
+External APIs
+Reusable Analytics Components
+
+Common business transformations become reusable assets that can be leveraged across multiple workflows, departments, and AI agents, reducing duplication while ensuring consistency.
+
+Enterprise Governance
+
+Built-in governance provides:
+
+Version control
+Lineage
+Auditability
+Security
+Role-based access
+Certified business data products
 - **In-DB Processing:** Leverages the Alteryx Snowflake In-DB connector to push transformation logic into Snowflake's compute engine, minimizing data movement
 - **Parameterized Workflows:** Database names, schemas, and connection details are parameterized for environment portability
 - **Incremental Processing:** Workflows are designed to process only changed records, aligned with the CDC feed from Openflow
