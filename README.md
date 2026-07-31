@@ -21,14 +21,14 @@ Capabilities leveraged:
 
 ### Alteryx One Platform
 
-Alteryx One empowers domain experts and data professionals to prepare, blend, and transform data through intuitive, no-code/low-code workflows. The Alteryx One platform enables automation and seamless pushdown execution in Snowflake, allowing insurance teams to build repeatable, governed data pipelines that encode complex business logic without requiring deep engineering expertise. 
+Alteryx One empowers domain experts and data professionals to prepare, blend, and transform data through intuitive, no-code/low-code workflows. The Alteryx One platform enables automation and seamless pushdown execution in Snowflake, allowing insurance teams to build repeatable, governed data pipelines that encode complex business logic without requiring deep engineering expertise. Additionally, with Alteryx Agents and MCP Server business users are able to leverage trusted data and insights in AI solutions such as Snowflake CoWork
 
 Capabilities leveraged:
 - **Live Query** -- Empowers business users to build no-code workflows and execute analytics directly within Snowflake without moving raw data 
 - **Auto Insights** -- Delivers AI-driven pattern discovery and automated storytelling to uncover critical trends, root causes, and anomalies in insurance data
 - **Alteryx AI Agents** -- Enables users to build AI agents in Alteryx Agent Studio and extend trusted business context to Snowflake AI agents through MCP integration
 - **Orchestrator** -- Automated, scheduled execution of transformation workflows for continuous data freshness
-- **Data Quality & Governance** -- Built-in profiling, cleansing, and standardization capabilities while adhering to the RBAC and security protocols enforced in Snowflake. 
+- **Data Quality & Governance** -- Built-in profiling, cleansing, and standardization capabilities while adhering to the RBAC and security protocols enforced in Snowflake
 
 ---
 
@@ -39,19 +39,19 @@ Capabilities leveraged:
 │                              END-TO-END DATA FLOW                                           │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
 
- ┌────────────┐       ┌────────────┐       ┌────────────┐       ┌────────────┐       ┌────────────┐
- │   SOURCE   │       │ INGESTION  │       │  RAW LAYER │       │ TRANSFORM  │       │ ANALYTICS  │
- │            │       │            │       │            │       │            │       │   & AI     │
- │  MySQL 8.4 │──CDC──│ Snowflake  │──────>│ Snowflake  │──────>│  Alteryx   │──────>│ Snowflake  │
- │  (AWS EC2) │       │ Openflow   │       │ Raw Tables │       │ Designer   │       │ Cortex AI  │
- │            │       │            │       │            │       │  Cloud     │       │Auto Insights│
- └────────────┘       └────────────┘       └────────────┘       └────────────┘       └────────────┘
-       │                     │                     │                     │                     │
-       │                     │                     │                     │                     │
-  Operational          Real-time CDC          Bronze Layer          Silver & Gold         AI + Dashboard
-  Database             (sub-minute)           (8 tables)            Layers (Curated       (7 use cases)
-  8 tables             Inserts/Updates        ~53,705 rows          & Analytics)
-  ~53K rows            /Deletes
+              ┌────────────┐       ┌────────────┐       ┌────────────┐
+              │ RAW LAYER  │       │ TRANSFORM  │       │ ANALYTICS  │
+              │            │       │            │       │   & AI     │
+              │ Snowflake  │──────>│  Alteryx   │──────>│ Snowflake  │
+              │ Raw Tables │       │ Designer   │       │ Cortex AI  │
+              │            │       │  Cloud     │       │Auto Insights│
+              └────────────┘       └────────────┘       └────────────┘
+                    │                     │                     │
+                    │                     │                     │
+              Bronze Layer          Silver & Gold         AI + Dashboard
+               (8 tables)           Layers (Curated       (7 use cases)
+                ~53,705 rows          & Analytics)
+  
 
 
  ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -59,8 +59,8 @@ Capabilities leveraged:
  │  SNOWFLAKE AI DATA CLOUD                                                                    │
  │  ┌──────────────────────────────────────────────────────────────────────────────────────┐   │
  │  │                                                                                      │   │
- │  │  Openflow    ──>   Raw Tables   ──>   Alteryx In-DB   ──>   Cortex AI + Streamlit   │   │
- │  │  (SPCS)             (Landing)          (Pushdown SQL)        (LLM, ML, Analyst)      │   │
+ │  │    Raw Tables   ──>   Alteryx Live Query   ──>   Cortex & Alteryx AI + Streamlit     │   │
+ │  │    (Landing)          (Pushdown SQL)             (LLM, ML, Analyst)                  │   │
  │  │                                                                                      │   │
  │  └──────────────────────────────────────────────────────────────────────────────────────┘   │
  │                                                                                             │
@@ -69,15 +69,14 @@ Capabilities leveraged:
 
 ### Data Flow
 
-1. **Source:** MySQL 8.4 on AWS EC2 holds the operational insurance database -- customers, policies, underwriting decisions, claims, payments, adjusters, underwriters, and risk factors (~53,705 rows across 8 tables)
 
-2. **Ingestion:** Snowflake Openflow captures changes in real-time via CDC (Change Data Capture), landing raw data into Snowflake with sub-minute latency. Inserts, updates, and deletes flow continuously without batch scheduling.
+1. **Raw Data:** Snowflake holds the operation insurance database and raw data -- customers, policies, underwriting decisions, claims, payments, adjsuters, underwriters, and risk factors (~53,705 rows across 8 tables)
 
-3. **Transformation (Alteryx):** Insurance business analysts use Alteryx Designer Cloud to build domain-aware transformation workflows that read from the Snowflake raw layer and produce curated silver and gold layer outputs:
+2. **Transformation (Alteryx):** Insurance business analysts use Alteryx Live Query to build domain-aware transformation workflows that read from the Snowflake raw layer and produce curated silver and gold layer outputs with all data, compute, and processing remaining in the customer's Snowflake tenant:
    - **Silver Layer (Curated):** Cleansed, joined, and standardized views -- underwriting pipelines, claims detail, customer 360 profiles
    - **Gold Layer (Analytics):** Aggregated, KPI-ready datasets -- monthly underwriting metrics, claims summaries, fraud indicators, performance scorecards
 
-4. **AI & Analytics (Snowflake Cortex):** Cortex AI applies machine learning and large language models directly on the gold layer data. A 7-page Streamlit in Snowflake application delivers interactive, AI-powered insights to business stakeholders.
+3. **AI & Analytics (Snowflake Cortex, Alteryx Agents, & Streamlit):** Cortex AI applies machine learning and large language models directly on the gold layer data. A 7-page Streamlit in Snowflake application delivers interactive, AI-powered insights to business stakeholders. Snowflake CoWork applications are powered by Alteryx MCP Agents that derive trusted insights from the gold layer and business verified data curated in Alteryx
 
 ---
 
@@ -160,7 +159,8 @@ Built-in governance provides:
 
 ## Alteryx and Snowflake - Joint Architecture
 
-> *[Section reserved for detailed joint architecture diagram, integration patterns, and deployment topology]*
+
+<img width="1205" height="679" alt="image" src="https://github.com/user-attachments/assets/74e46e45-d4dc-42a7-bc78-21844707ef7f" />
 
 ---
 
