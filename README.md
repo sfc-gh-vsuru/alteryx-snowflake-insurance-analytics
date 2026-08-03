@@ -129,7 +129,7 @@ Business logic—including underwriting policies, claims rules, fraud detection 
 Curated outputs are published as governed business data products that can be consumed by:
 
 Snowflake Cortex Analysts
-Snowflake Agent Studio
+Alteryx MCP Agents
 Streamlit
 Alteryx Agent Studio
 Alteryx Auto Insights
@@ -154,6 +154,12 @@ Built-in governance provides:
 - Security
 - Role-based access
 - Certified business data products
+
+---
+
+## Alteryx Orchestrator
+
+Alteryx Orchestrator manages, automates, and schedules end-to-end workflow execution to ensure trusted and refreshed data views in Snowflake. It guarantees sequential processing, ensuring Silver Data workflows complete before Gold Data workflows execute. Automatically updating all downstream Snowflake Data views and sending notifications to guarantee trusted, accurate results across the enterprise
 
 ---
 
