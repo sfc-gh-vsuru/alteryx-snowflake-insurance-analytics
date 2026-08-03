@@ -106,7 +106,7 @@ Claims Curated View Workflow
 Underwriting Curated View Workflow
 <div class="image-gallery">
   <figure>
-    <img src="streamlit/images/Underwriting Silver View.png" alt="Description 1">
+    <img src="streamlit/images/Underwriting Silver View Workflow.png" alt="Description 2">
   </figure>
 </div>
 
