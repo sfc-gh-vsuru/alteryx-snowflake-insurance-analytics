@@ -72,11 +72,13 @@ Capabilities leveraged:
 
 1. **Raw Data:** Snowflake holds the operation insurance database and raw data -- customers, policies, underwriting decisions, claims, payments, adjsuters, underwriters, and risk factors (~53,705 rows across 8 tables)
 
-2. **Transformation (Alteryx):** Insurance business analysts use Alteryx Live Query to build domain-aware transformation workflows that read from the Snowflake raw layer and produce curated silver and gold layer outputs with all data, compute, and processing remaining in the customer's Snowflake tenant:
+2. **Create Snowflake Connection in Alteryx One:** Create data connection to Snowflake through OAuth and Key Pair Authentication. The Alteryx One data connection will only inherit the data privileges and RBAC that were provisioned in Snowflake ensuring secure and govern use of all business data 
+
+3. **Transformation (Alteryx):** Insurance business analysts use Alteryx Live Query to build domain-aware transformation workflows that read from the Snowflake raw layer and produce curated silver and gold layer outputs with all data, compute, and processing remaining in the customer's Snowflake tenant:
    - **Silver Layer (Curated):** Cleansed, joined, and standardized views -- underwriting pipelines, claims detail, customer 360 profiles
    - **Gold Layer (Analytics):** Aggregated, KPI-ready datasets -- monthly underwriting metrics, claims summaries, fraud indicators, performance scorecards
 
-3. **AI & Analytics (Snowflake Cortex, Alteryx Agents, & Streamlit):** Cortex AI applies machine learning and large language models directly on the gold layer data. A 7-page Streamlit in Snowflake application delivers interactive, AI-powered insights to business stakeholders. Snowflake CoWork applications are powered by Alteryx MCP Agents that derive trusted insights from the gold layer and business verified data curated in Alteryx
+4. **AI & Analytics (Snowflake Cortex, Alteryx Agents, & Streamlit):** Cortex AI applies machine learning and large language models directly on the gold layer data. A 7-page Streamlit in Snowflake application delivers interactive, AI-powered insights to business stakeholders. Snowflake CoWork applications are powered by Alteryx MCP Agents that derive trusted insights from the gold layer and business verified data curated in Alteryx
 
 ---
 
