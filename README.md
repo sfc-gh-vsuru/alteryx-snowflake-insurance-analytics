@@ -191,12 +191,31 @@ Built-in governance provides:
 
 Alteryx Orchestrator manages, automates, and schedules end-to-end workflow execution to ensure trusted and refreshed data views in Snowflake. It guarantees sequential processing, ensuring Silver Data workflows complete before Gold Data workflows execute. Automatically updating all downstream Snowflake Data views and sending notifications to guarantee trusted, accurate results across the enterprise
 
+### Orchestrator
+<div class="image-gallery">
+  <figure>
+    <img src="streamlit/images/Insurance Underwriting Orchestrator.png" alt="Description 1">
+  </figure>
+</div>
 ---
 
 ## Alteryx MCP Agents
 
 Alteryx MCP (Model Context Protocol) Agents leverage governed enterprise data to generate high-confidence, trusted insights. Seamlessly incorporated into Snowflake CoWork, these agents enable frictionless deployment, continuous real-time monitoring, and complete evaluation capabilities. Integrating Alteryx MCP Agents with Snowflake CoWork deliver secure, transparent, and trusted AI solutions across the organization.
 
+### Alteryx MCP Agent Planning Steps
+<div class="image-gallery">
+  <figure>
+    <img src="streamlit/images/Alteryx MCP Planning Steps.png" alt="Description 1">
+  </figure>
+</div>
+
+### Alteryx MCP Agent Response in Snowflake CoWork
+<div class="image-gallery">
+  <figure>
+    <img src="streamlit/images/Alteryx MCP Agent Response.png" alt="Description 1">
+  </figure>
+</div>
 ---
 
 ## Alteryx and Snowflake - Joint Architecture
