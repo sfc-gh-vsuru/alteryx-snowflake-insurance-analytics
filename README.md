@@ -96,14 +96,14 @@ The curated outputs become governed data products that power dashboards, AI agen
 | Claim Payments Summary | Payment aggregates per claim with type/method breakdowns and settlement tracking | Claims Curated Views
 | Customer 360 | Holistic customer view rolling up policy, claims, and payment histories | Customer Curated Views
 
-Claims Curated View Workflow
+### Claims Curated View Workflow
 <div class="image-gallery">
   <figure>
     <img src="streamlit/images/Claims Silver Views.png" alt="Description 1">
   </figure>
 </div>
 
-Underwriting Curated View Workflow
+### Underwriting Curated View Workflow
 <div class="image-gallery">
   <figure>
     <img src="streamlit/images/Underwriting Silver View Workflow.png" alt="Description 2">
@@ -120,14 +120,14 @@ Underwriting Curated View Workflow
 | Underwriter Performance | Individual underwriter scorecards with approval rates, volume, and risk metrics | Insurance Underwriting Analytics
 | Adjuster Performance | Claims adjuster efficiency metrics by region with settlement rates and workload indicators | Claims Analytics
 
-Insurance Underwriting Analytics Workflow
+### Insurance Underwriting Analytics Workflow
 <div class="image-gallery">
   <figure>
     <img src="streamlit/images/Underwriting Gold Layer Workflow.png" alt="Description 1">
   </figure>
 </div>
 
-Claims Analytics Workflow
+### Claims Analytics Workflow
 <div class="image-gallery">
   <figure>
     <img src="streamlit/images/Claims Gold View Workflow.png" alt="Description 1">
