@@ -302,6 +302,6 @@ dependencies:
 
 This solution demonstrates a complete insurance analytics pipeline:
 
-**MySQL (Source)** --> **Openflow CDC (Real-time Ingestion)** --> **Snowflake Raw Layer** --> **Alteryx (Business-Aware Transformation)** --> **Snowflake Cortex AI (Intelligence)** --> **Streamlit in Snowflake (Delivery)**
+**Snowflake Raw Layer** --> **Alteryx (Business Logic Layer)** --> **Snowflake Cortex AI & Alteryx MCP Agents (Intelligence)** --> **Streamlit in Snowflake (Delivery)**
 
-Alteryx owns the business logic layer -- insurance domain experts design and maintain transformation workflows that encode underwriting guidelines, claims rules, and compliance requirements. Snowflake Cortex AI then applies generative AI, machine learning, and natural language analytics on top of the curated outputs, delivering intelligent insights through an interactive dashboard accessible to all stakeholders.
+Alteryx owns the business logic layer -- insurance domain experts design and maintain transformation workflows that encode underwriting guidelines, claims rules, and compliance requirements. Snowflake Cortex AI & Alteryx MCP Agents then applies generative AI, machine learning, and natural language analytics on top of the curated outputs, delivering intelligent insights through an interactive dashboard accessible to all stakeholders.
