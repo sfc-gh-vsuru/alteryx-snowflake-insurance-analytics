@@ -164,12 +164,6 @@ Built-in governance provides:
 
 ---
 
-## Alteryx Solution Deep Dive
-
-> *[Section reserved for detailed Alteryx workflow documentation, canvas screenshots, and business rule specifications]*
-
----
-
 ## Business Use Cases (Cortex AI)
 
 The gold layer data produced by Alteryx workflows feeds directly into **7 AI-powered insurance analytics use cases**, each showcasing a distinct Snowflake Cortex AI capability:
