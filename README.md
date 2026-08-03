@@ -102,16 +102,6 @@ Curated View Workflows
     <img src="streamlit/images/Claims Silver Views.png" alt="Description 1">
     <figcaption>Claims Silver Workflow</figcaption>
   </figure>
-
-  <figure>
-    <img src="streamlit/images/Underwriting Silver View.png" alt="Description 2">
-    <figcaption>Underwriting Silver Workflow</figcaption>
-  </figure>
-
-    <figure>
-    <img src="streamlit/images/Customer Silver View.png" alt="Description 2">
-    <figcaption>Customer Silver Workflow</figcaption>
-  </figure>
 </div>
 
 <style>
@@ -125,7 +115,6 @@ Curated View Workflows
   }
 </style>
 
-<img src="streamlit/images/Claims Silver Views.png" alt="Claims Curated View Workflow" width="500">
 
 ### Gold Layer (Analytics)
 
