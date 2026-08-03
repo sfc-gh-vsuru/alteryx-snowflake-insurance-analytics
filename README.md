@@ -120,6 +120,20 @@ Underwriting Curated View Workflow
 | Underwriter Performance | Individual underwriter scorecards with approval rates, volume, and risk metrics | Insurance Underwriting Analytics
 | Adjuster Performance | Claims adjuster efficiency metrics by region with settlement rates and workload indicators | Claims Analytics
 
+Insurance Underwriting Analytics Workflow
+<div class="image-gallery">
+  <figure>
+    <img src="streamlit/images/Underwriting Gold Layer Workflow.png" alt="Description 1">
+  </figure>
+</div>
+
+Claims Analytics Workflow
+<div class="image-gallery">
+  <figure>
+    <img src="streamlit/images/Claims Gold View Workflow.png" alt="Description 1">
+  </figure>
+</div>
+
 ### Alteryx Workflow Design Principles
 
 ## Business-Owned Logic
