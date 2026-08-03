@@ -96,7 +96,7 @@ The curated outputs become governed data products that power dashboards, AI agen
 | Claim Payments Summary | Payment aggregates per claim with type/method breakdowns and settlement tracking | Claims Curated Views
 | Customer 360 | Holistic customer view rolling up policy, claims, and payment histories | Customer Curated Views
 
-![Claims Curated View Workflow] (streamlit/images/Claims Silver Views.png)
+<img src="streamlit/images/Claims Silver Views.png" alt="Claims Curated View Workflow" width="500">
 
 ### Gold Layer (Analytics)
 
