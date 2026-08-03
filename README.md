@@ -104,16 +104,6 @@ Curated View Workflows
   </figure>
 </div>
 
-<style>
-  .image-gallery {
-    display: flex;
-    gap: 20px; /* Adds space between the images */
-  }
-  .image-gallery img {
-    max-width: 100%; /* Keeps images responsive */
-    height: auto;
-  }
-</style>
 
 
 ### Gold Layer (Analytics)
