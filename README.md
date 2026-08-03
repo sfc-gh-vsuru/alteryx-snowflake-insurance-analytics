@@ -169,6 +169,8 @@ Alteryx Orchestrator manages, automates, and schedules end-to-end workflow execu
 
 Alteryx MCP (Model Context Protocol) Agents leverage governed enterprise data to generate high-confidence, trusted insights. Seamlessly incorporated into Snowflake CoWork, these agents enable frictionless deployment, continuous real-time monitoring, and complete evaluation capabilities. Integrating Alteryx MCP Agents with Snowflake CoWork deliver secure, transparent, and trusted AI solutions across the organization.
 
+---
+
 ## Alteryx and Snowflake - Joint Architecture
 
 
