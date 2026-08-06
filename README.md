@@ -4,9 +4,9 @@
 
 In the insurance industry, profitability hinges on two critical capabilities: speed to decision in underwriting and accuracy with efficiency in claims processing. Traditional data pipelines often fragment business logic across legacy tools, delaying critical operational insights, increasing loss ratios, and creating severe governance risks through continuous data movement.
 
-This enterprise reference architecture demonstrates how combining Snowflake’s AI Data Cloud and Alteryx One Platform bridges the gap between raw operational data and business-driven operational AI. By pairing Alteryx’s intuitive, business-owned transformation engine with Snowflake’s high-performance, in-database compute and AI capabilities, insurance carriers can:
+This enterprise reference architecture demonstrates how combining Snowflake’s AI Data Cloud and Alteryx One Platform bridges the gap between raw operational data and business-driven operational AI. By pairing Alteryx’s intuitive, business-owned transformation engine and insights capabilities with Snowflake’s high-performance data warehousing and AI capabilities, insurance carriers can:
 
-- Eliminate Data Friction & Exposure: Transform massive operational datasets directly inside Snowflake using pushdown execution (Live Query) eliminating pipeline latency, data egress costs, and compliance risks.
+- Eliminate Data Friction & Exposure: Transform massive operational datasets directly inside Snowflake using pushdown execution (Alteryx Live Query) eliminating pipeline latency, data egress costs, and compliance risks.
 
 - Empower Domain Experts: Put logic creation directly into the hands of underwriters, adjusters, and risk analysts without relying on backlogged data engineering teams.
 
