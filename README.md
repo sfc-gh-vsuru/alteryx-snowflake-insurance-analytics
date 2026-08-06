@@ -6,11 +6,13 @@ In the insurance industry, profitability hinges on two critical capabilities: sp
 
 This enterprise reference architecture demonstrates how combining Snowflake’s AI Data Cloud and Alteryx One Platform bridges the gap between raw operational data and business-driven operational AI. By pairing Alteryx’s intuitive, business-owned transformation engine with Snowflake’s high-performance, in-database compute and AI capabilities, insurance carriers can:
 
-Eliminate Data Friction & Exposure: Transform massive operational datasets directly inside Snowflake using pushdown execution (Live Query) eliminating pipeline latency, data egress costs, and compliance risks.
+- Eliminate Data Friction & Exposure: Transform massive operational datasets directly inside Snowflake using pushdown execution (Live Query) eliminating pipeline latency, data egress costs, and compliance risks.
 
-Empower Domain Experts: Put logic creation directly into the hands of underwriters, adjusters, and risk analysts without relying on backlogged data engineering teams.
+- Empower Domain Experts: Put logic creation directly into the hands of underwriters, adjusters, and risk analysts without relying on backlogged data engineering teams.
 
-Operationalize AI at Scale: Convert business-curated data products directly into AI insights—leveraging Snowflake Cortex AI, Cortex ML, and Alteryx MCP Agents to automate fraud detection, prioritize claims, and generate executive narratives.
+- Operationalize AI at Scale: Convert business-curated data products directly into AI insights. Leveraging Snowflake Cortex AI and Alteryx MCP Agents to automate fraud detection, prioritize claims, understand drivers for business activity, and generate executive narratives. 
+
+
 ---
 ## Core Business Value Drivers
 
