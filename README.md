@@ -1,8 +1,26 @@
 # Insurance Underwriting & Claims Analytics
 
-## Snowflake AI Data Cloud + Alteryx One Platform
+## Unlocking Enterprise Value with Snowflake AI Data Cloud + Alteryx One Platform
 
-An end-to-end insurance analytics solution demonstrating how operational data flows from source systems through business-aware transformation pipelines into AI-powered analytics -- combining Snowflake's AI Data Cloud with the Alteryx One Platform.
+In the insurance industry, profitability hinges on two critical capabilities: speed to decision in underwriting and accuracy with efficiency in claims processing. Traditional data pipelines often fragment business logic across legacy tools, delaying critical operational insights, increasing loss ratios, and creating severe governance risks through continuous data movement.
+
+This enterprise reference architecture demonstrates how combining Snowflake’s AI Data Cloud and Alteryx One Platform bridges the gap between raw operational data and business-driven operational AI. By pairing Alteryx’s intuitive, business-owned transformation engine with Snowflake’s high-performance, in-database compute and AI capabilities, insurance carriers can:
+
+Eliminate Data Friction & Exposure: Transform massive operational datasets directly inside Snowflake using pushdown execution (Live Query) eliminating pipeline latency, data egress costs, and compliance risks.
+
+Empower Domain Experts: Put logic creation directly into the hands of underwriters, adjusters, and risk analysts without relying on backlogged data engineering teams.
+
+Operationalize AI at Scale: Convert business-curated data products directly into AI insights—leveraging Snowflake Cortex AI, Cortex ML, and Alteryx MCP Agents to automate fraud detection, prioritize claims, and generate executive narratives.
+---
+## Core Business Value Drivers
+
+- Proactive Fraud Risk Mitigation: Combined time-series anomaly detection and generative AI evaluate claims in real time, reducing claim leakage and lowering overall loss ratios.
+
+- Accelerated Claims Triage & Settlement: Automated priority scoring (P1–P4) matches claims with optimal adjusters based on workload and specialization, boosting policyholder satisfaction and reducing cycle times.
+
+- Dynamic Underwriting Performance: Curated 360-degree risk profiles provide transparent performance metrics, scorecards, and AI-driven coaching for underwriting staff.
+
+- Zero-SQL Business Intelligence: Cortex Analyst (Semantic Views) and interactive Streamlit apps empower executives to query complex insurance metrics using plain English without writing a single line of SQL.
 
 ---
 
