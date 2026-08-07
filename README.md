@@ -287,6 +287,6 @@ An insurance executive begins their day on the **Executive Dashboard**, reviewin
 
 This solution demonstrates a complete insurance analytics pipeline:
 
-**Snowflake Raw Layer** --> **Alteryx (Business Logic Layer)** --> **Snowflake Cortex AI & Alteryx MCP Agents (Intelligence)** --> **Streamlit in Snowflake (Delivery)**
+![Business Intelligence Data Flow](streamlit/images/Business-Intelligence-Data-Flow.jpg)
 
 Alteryx owns the business logic layer -- insurance domain experts design and maintain transformation workflows that encode underwriting guidelines, claims rules, and compliance requirements. Snowflake Cortex AI & Alteryx MCP Agents then applies generative AI, machine learning, and natural language analytics on top of the curated outputs, delivering intelligent insights through an interactive dashboard accessible to all stakeholders.
