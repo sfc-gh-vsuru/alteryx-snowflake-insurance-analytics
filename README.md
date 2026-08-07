@@ -54,38 +54,7 @@ Capabilities leveraged:
 
 ## Solution Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│                              END-TO-END DATA FLOW                                           │
-└─────────────────────────────────────────────────────────────────────────────────────────────┘
-
-              ┌────────────┐       ┌────────────┐       ┌────────────┐
-              │ RAW LAYER  │       │ TRANSFORM  │       │ ANALYTICS  │
-              │            │       │            │       │   & AI     │
-              │ Snowflake  │──────>│  Alteryx   │──────>│ Snowflake  │
-              │ Raw Tables │       │ Designer   │       │ Cortex AI  │
-              │            │       │  Cloud     │       │Auto Insights│
-              └────────────┘       └────────────┘       └────────────┘
-                    │                     │                     │
-                    │                     │                     │
-              Bronze Layer          Silver & Gold         AI + Dashboard
-               (8 tables)           Layers (Curated       (7 use cases)
-                ~53,705 rows          & Analytics)
-  
-
-
- ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
- │                                                                                             │
- │  SNOWFLAKE AI DATA CLOUD                                                                    │
- │  ┌──────────────────────────────────────────────────────────────────────────────────────┐   │
- │  │                                                                                      │   │
- │  │    Raw Tables   ──>   Alteryx Live Query   ──>   Cortex & Alteryx AI + Streamlit     │   │
- │  │    (Landing)          (Pushdown SQL)             (LLM, ML, Analyst)                  │   │
- │  │                                                                                      │   │
- │  └──────────────────────────────────────────────────────────────────────────────────────┘   │
- │                                                                                             │
- └─────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+![End-to-End Data Flow and Architectural Overview](streamlit/images/end-to-end%20data%20flow%20and%20architectural%20overview.jpg)
 
 ### Data Flow
 
