@@ -257,6 +257,32 @@ A multi-page interactive dashboard deployed natively in Snowflake:
 | Ask Me Anything | Natural language chat interface powered by Cortex Analyst |
 | Adjuster Workload | Regional bubble charts, workload optimization recommendations |
 
+### Dashboard Screenshots
+
+#### Executive Dashboard
+![Executive Dashboard](streamlit/images/Executive%20Dashboard.png)
+
+#### Fraud Intelligence Center
+![Fraud Intelligence Center](streamlit/images/Fraud%20Intelligence%20Center.png)
+
+#### AI Fraud Risk Assessment
+![AI Fraud Risk Assessment](streamlit/images/AI%20Fraud%20Risk%20Assesment.png)
+
+#### Anomaly Detection
+| | |
+|---|---|
+| ![Anomaly Detection 1](streamlit/images/Anomaly%20Detection-1.png) | ![Anomaly Detection 2](streamlit/images/Anomaly%20Detection-2.png) |
+
+#### Underwriter Performance
+| | |
+|---|---|
+| ![Underwriter Performance 1](streamlit/images/Underwriter%20Performance-1.png) | ![Underwriter Performance 2](streamlit/images/Underwriter%20Performance-2.png) |
+
+#### Adjuster Workload
+| | |
+|---|---|
+| ![Adjuster Workload Optimizer](streamlit/images/Adjuster%20Workload%20Optimiser.png) | ![Adjuster Workload Analysis](streamlit/images/Adjuster%20Workload%20Analysis.png) |
+
 ---
 
 ## Access & Permissions
