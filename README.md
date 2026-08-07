@@ -259,86 +259,27 @@ A multi-page interactive dashboard deployed natively in Snowflake:
 
 ### Dashboard Screenshots
 
-#### Executive Dashboard
 ![Executive Dashboard](streamlit/images/Executive%20Dashboard.png)
 
-#### Fraud Intelligence Center
 ![Fraud Intelligence Center](streamlit/images/Fraud%20Intelligence%20Center.png)
 
-#### AI Fraud Risk Assessment
 ![AI Fraud Risk Assessment](streamlit/images/AI%20Fraud%20Risk%20Assesment.png)
 
-#### Anomaly Detection
 | | |
 |---|---|
 | ![Anomaly Detection 1](streamlit/images/Anomaly%20Detection-1.png) | ![Anomaly Detection 2](streamlit/images/Anomaly%20Detection-2.png) |
 
-#### Underwriter Performance
 | | |
 |---|---|
 | ![Underwriter Performance 1](streamlit/images/Underwriter%20Performance-1.png) | ![Underwriter Performance 2](streamlit/images/Underwriter%20Performance-2.png) |
 
-#### Adjuster Workload
 | | |
 |---|---|
 | ![Adjuster Workload Optimizer](streamlit/images/Adjuster%20Workload%20Optimiser.png) | ![Adjuster Workload Analysis](streamlit/images/Adjuster%20Workload%20Analysis.png) |
 
----
+### Bringing It All Together: How Business Users Navigate the Dashboard
 
-## Access & Permissions
-
-This solution uses a **least-privilege** access model. Replace placeholder role names with roles appropriate to your organization:
-
-| Role (Configurable) | Access Level |
-|---------------------|-------------|
-| `<DEPLOYER_ROLE>` | Owner -- creates all objects during initial deployment |
-| `<CONSUMER_ROLE>` | Read access to views, tables, UDFs, Streamlit app, and semantic view |
-
-### Recommended RBAC Setup
-
-```sql
-CREATE ROLE IF NOT EXISTS INSURANCE_ANALYTICS_ROLE;
-
-GRANT USAGE ON DATABASE <YOUR_DATABASE> TO ROLE INSURANCE_ANALYTICS_ROLE;
-GRANT USAGE ON SCHEMA <YOUR_DATABASE>.PUBLIC TO ROLE INSURANCE_ANALYTICS_ROLE;
-GRANT SELECT ON ALL VIEWS IN SCHEMA <YOUR_DATABASE>.PUBLIC TO ROLE INSURANCE_ANALYTICS_ROLE;
-GRANT SELECT ON ALL TABLES IN SCHEMA <YOUR_DATABASE>.PUBLIC TO ROLE INSURANCE_ANALYTICS_ROLE;
-GRANT USAGE ON ALL FUNCTIONS IN SCHEMA <YOUR_DATABASE>.PUBLIC TO ROLE INSURANCE_ANALYTICS_ROLE;
-GRANT USAGE ON STREAMLIT <YOUR_DATABASE>.PUBLIC.<YOUR_STREAMLIT_APP> TO ROLE INSURANCE_ANALYTICS_ROLE;
-```
-
----
-
-## Technical Prerequisites
-
-- Snowflake account with Cortex AI enabled ([region availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability))
-- Snowflake Openflow enabled for CDC ingestion
-- Alteryx Designer Cloud with Snowflake In-DB connector configured
-- A warehouse with appropriate sizing (XSMALL is sufficient for this dataset)
-- A role with `CREATE DATABASE` privileges (initial setup only)
-
-### Dependencies
-
-```yaml
-name: sf_env
-channels:
-  - snowflake
-dependencies:
-  - plotly
-  - snowflake-snowpark-python
-```
-
----
-
-## Security Considerations
-
-> **This repository contains NO credentials, passwords, API keys, or secrets.**
-
-- All configuration values (database names, roles, warehouses) are parameterized as placeholders
-- The Streamlit app uses `get_active_session()` -- inherits the caller's session with no embedded credentials
-- UDFs reference Cortex functions via fully-qualified names with no authentication tokens
-- Data access is governed by Snowflake RBAC -- the app only sees what the executing role is granted
-- Source data is read-only by design -- transformation outputs are written to separate schemas
+An insurance executive begins their day on the **Executive Dashboard**, reviewing portfolio-level KPIs -- policy volumes, approval rates, and risk trends across product lines -- before drilling into AI-generated narratives that surface emerging concerns. The **Fraud Intelligence** team picks up from there, scanning anomaly detection timelines for unusual spikes in claims activity and triggering AI risk assessments on flagged segments to prioritize which cases warrant full investigation and evidence gathering. Meanwhile, **Claims Operations** uses the Triage Command Center to classify incoming claims by severity, allocate adjusters based on workload capacity, and track settlement efficiency by region. **Underwriting managers** monitor individual performance scorecards and leverage AI coaching recommendations to guide team development conversations. When deeper questions arise that no single chart can answer, stakeholders turn to the **Ask Me Anything** interface -- querying the data in plain English to validate hypotheses before initiating formal business actions like policy reviews, fraud referrals, or capacity rebalancing.
 
 ---
 

@@ -6,8 +6,9 @@ Step-by-step instructions to deploy the Insurance Analytics solution from scratc
 
 ## Prerequisites
 
-- Snowflake account with Cortex AI enabled
+- Snowflake account with Cortex AI enabled ([region availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability))
 - Access to the source data (gold layer tables from upstream transformation pipeline)
+- Alteryx Designer Cloud with Snowflake In-DB connector configured (for transformation layer)
 - A role with `CREATE DATABASE`, `CREATE VIEW`, `CREATE FUNCTION`, `CREATE STAGE`, `CREATE STREAMLIT` privileges
 - A warehouse (XSMALL is sufficient)
 
@@ -491,3 +492,15 @@ SELECT * FROM FRAUD_ANOMALY_RESULTS WHERE IS_ANOMALY = TRUE;
 - **ML Models:** The anomaly detection model requires a train/test time split. Data before 2025 is used for training; 2025+ data is evaluated for anomalies.
 - **Streamlit Packages:** Ensure `plotly` is added to the SiS app packages (via environment.yml or the Packages panel in Snowsight).
 - **Plotly Compatibility:** Use `plotly.graph_objects` (`go.Figure`, `go.Bar`, `go.Scatter`) instead of `plotly.express` (`px.bar`, `px.scatter`, `px.pie`) for reliable rendering in Streamlit in Snowflake.
+
+---
+
+## Security Considerations
+
+> **This repository contains NO credentials, passwords, API keys, or secrets.**
+
+- All configuration values (database names, roles, warehouses) are parameterized as placeholders
+- The Streamlit app uses `get_active_session()` -- inherits the caller's session with no embedded credentials
+- UDFs reference Cortex functions via fully-qualified names with no authentication tokens
+- Data access is governed by Snowflake RBAC -- the app only sees what the executing role is granted
+- Source data is read-only by design -- transformation outputs are written to separate schemas
