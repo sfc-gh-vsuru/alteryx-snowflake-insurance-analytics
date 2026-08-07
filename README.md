@@ -119,18 +119,10 @@ The curated outputs become governed data products that power dashboards, AI agen
 | Customer 360 | Holistic customer view rolling up policy, claims, and payment histories | Customer Curated Views
 
 ### Claims Curated View Workflow
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Claims Silver Views.png" alt="Description 1">
-  </figure>
-</div>
+![Claims Curated View Workflow](streamlit/images/Claims%20Silver%20Views.png)
 
 ### Underwriting Curated View Workflow
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Underwriting Silver View Workflow.png" alt="Description 2">
-  </figure>
-</div>
+![Underwriting Curated View Workflow](streamlit/images/Underwriting%20Silver%20View%20Workflow.png)
 
 ### Gold Layer (Analytics)
 
@@ -143,18 +135,10 @@ The curated outputs become governed data products that power dashboards, AI agen
 | Adjuster Performance | Claims adjuster efficiency metrics by region with settlement rates and workload indicators | Claims Analytics
 
 ### Insurance Underwriting Analytics Workflow
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Underwriting Gold Layer Workflow.png" alt="Description 1">
-  </figure>
-</div>
+![Insurance Underwriting Analytics Workflow](streamlit/images/Underwriting%20Gold%20Layer%20Workflow.png)
 
 ### Claims Analytics Workflow
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Claims Gold View Workflow.png" alt="Description 1">
-  </figure>
-</div>
+![Claims Analytics Workflow](streamlit/images/Claims%20Gold%20View%20Workflow.png)
 
 ### Alteryx Workflow Design Principles
 
@@ -214,11 +198,7 @@ Built-in governance provides:
 Alteryx Orchestrator manages, automates, and schedules end-to-end workflow execution to ensure trusted and refreshed data views in Snowflake. It guarantees sequential processing, ensuring Silver Data workflows complete before Gold Data workflows execute. Automatically updating all downstream Snowflake Data views and sending notifications to guarantee trusted, accurate results across the enterprise
 
 ### Orchestrator
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Insurance Underwriting Orchestrator.png" alt="Description 1">
-  </figure>
-</div>
+![Orchestrator](streamlit/images/Insurance%20Underwriting%20Orchestrator.png)
 ---
 
 ## Alteryx MCP Agents
@@ -226,18 +206,10 @@ Alteryx Orchestrator manages, automates, and schedules end-to-end workflow execu
 Alteryx MCP (Model Context Protocol) Agents leverage governed enterprise data to generate high-confidence, trusted insights. Seamlessly incorporated into Snowflake CoWork, these agents enable frictionless deployment, continuous real-time monitoring, and complete evaluation capabilities. Integrating Alteryx MCP Agents with Snowflake CoWork deliver secure, transparent, and trusted AI solutions across the organization.
 
 ### Alteryx MCP Agent Planning Steps
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Alteryx MCP Planning Steps.png" alt="Description 1">
-  </figure>
-</div>
+![Alteryx MCP Agent Planning Steps](streamlit/images/Alteryx%20MCP%20Planning%20Steps.png)
 
 ### Alteryx MCP Agent Response in Snowflake CoWork
-<div class="image-gallery">
-  <figure>
-    <img src="streamlit/images/Alteryx MCP Agent Response.png" alt="Description 1">
-  </figure>
-</div>
+![Alteryx MCP Agent Response in Snowflake CoWork](streamlit/images/Alteryx%20MCP%20Agent%20Response.png)
 ---
 
 ## Alteryx and Snowflake - Joint Architecture
